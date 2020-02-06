@@ -6,11 +6,14 @@
 
 $(document).ready(function() {
   $(".btn-search").click(function() {
+    // svuoto risultati di ricerca
+    $('#movie-list').html('');
     // avvio funzione ricerca
     searchMovies()
   });
   $("#movie-search").keypress(function() {
     if (event.which == 13 || event.keyCode == 13) {
+      $('#movie-list').html('');
       searchMovies();
     }
   });
