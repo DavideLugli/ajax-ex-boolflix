@@ -13,20 +13,20 @@
 </head>
 
 <body>
-<div class="movie-search-wrapper flex">
-<input type="search" id="movie-search" placeholder="Search Movies" value="">
-<button class="btn-search"type="button" name="button">Cerca</button>
-</div>
-<div class="movie-wrapper">
-<ul class="movie-list">
+  <div class="movie-search-wrapper flex">
+    <input type="search" id="movie-search" placeholder="Search Movies" value="">
+    <button class="btn-search" type="button" name="button">Cerca</button>
+  </div>
+  <div class="movie-wrapper">
+    <ul id="movie-list">
 
-</ul>
-</div>
-<!-- handlebars template -->
-<script id="entry-template" type="text/x-handlebars-template">
-<li class="movie">{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
+    </ul>
+  </div>
+  <!-- handlebars template -->
+  <script id="entry-template" type="text/x-handlebars-template">
+    <li class="movie">{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
 </script>
-<!-- fine handlebars template -->
+  <!-- fine handlebars template -->
   <!-- mio script -->
   <script src="js/script.js" charset="utf-8"></script>
 </body>

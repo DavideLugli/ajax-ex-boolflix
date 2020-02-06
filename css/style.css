@@ -13,6 +13,6 @@
   justify-content: center;
 }
 
-.movie-list {
+#movie-list {
   list-style: none;
 }
