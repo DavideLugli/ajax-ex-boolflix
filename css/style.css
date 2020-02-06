@@ -3,3 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.flex {
+  display: flex;
+}
+
+.movie-search-wrapper {
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.movie-list {
+  list-style: none;
+}

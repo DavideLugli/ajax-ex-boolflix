@@ -7,15 +7,28 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- handlebar script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
-  <!-- mio script -->
-  <script src="js/script.js" charset="utf-8"></script>
   <!-- mio style -->
   <link rel="stylesheet" href="css/style.css">
-  <title>Template</title>
+  <title>BoolFlix</title>
 </head>
 
 <body>
+<div class="movie-search-wrapper flex">
+<input type="search" id="movie-search" placeholder="Search Movies" value="">
+<button class="btn-search"type="button" name="button">Cerca</button>
+</div>
+<div class="movie-wrapper">
+<ul class="movie-list">
 
+</ul>
+</div>
+<!-- handlebars template -->
+<script id="entry-template" type="text/x-handlebars-template">
+<li class="movie">{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
+</script>
+<!-- fine handlebars template -->
+  <!-- mio script -->
+  <script src="js/script.js" charset="utf-8"></script>
 </body>
 
 </html>
