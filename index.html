@@ -7,6 +7,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- handlebar script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
+  <!-- google fonts style x LATO -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
   <!-- mio style -->
   <link rel="stylesheet" href="css/style.css">
   <title>BoolFlix</title>
@@ -24,7 +26,11 @@
   </div>
   <!-- handlebars template -->
   <script id="entry-template" type="text/x-handlebars-template">
-    <li class="movie">{{title}} - {{original_title}} - {{original_language}} - {{vote_average}}</li>
+    <li class="movie">
+      <span>Titolo: </span>{{title}}
+      <span>Titolo Originale: </span>{{original_title}}
+      <span>Lingua Originale: </span>{{original_language}}
+      <span>Voto Medio Utenti: </span> {{vote_average}}</li>
 </script>
   <!-- fine handlebars template -->
   <!-- mio script -->
