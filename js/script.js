@@ -34,6 +34,15 @@ function starsRate(userRate) {
   return star
 }
 
+// stampa bandiera
+function flag(lang) {
+  var flags = ['bg', 'de', 'el', 'en', 'es', 'fr', 'hi', 'it', 'ru', 'zh'];
+  if (flags.includes(lang)) {
+    return lang;
+  } else {
+    return lang = 'problem';
+  }
+}
 // stampa film
 function printMovies(movies) {
   var source = $("#entry-template").html();
@@ -44,7 +53,7 @@ function printMovies(movies) {
     var context = {
       title: thisMovie.title,
       original_title: thisMovie.original_title,
-      original_language: thisMovie.original_language,
+      original_language: flag(thisMovie.original_language),
       vote_average: starsRate(thisMovie.vote_average)
     };
     var html = template(context);
