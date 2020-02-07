@@ -21,12 +21,18 @@ $(document).ready(function() {
 // FUNZIONI
 
 // // stampa stelle
-// function starsRate(star, userRate) {
-//   var star = $('.star-template').children().clone();
-//   for (var i = 0; i < userRate; i++) {
-//     $('.schedaFilm .stars-wrapper').append(star);
-//   }
-// }
+function starsRate(userRate) {
+  var starsRate = Math.ceil(userRate / 2);
+  var star = "";
+  for (var i = 1; i <= 5; i++) {
+    if (i <= starsRate) {
+      star += '<i class="fas fa-star"></i>';
+    } else {
+      star += '<i class="far fa-star"></i>';
+    }
+  }
+  return star
+}
 
 // stampa film
 function printMovies(movies) {
@@ -34,23 +40,16 @@ function printMovies(movies) {
   var template = Handlebars.compile(source);
   for (var i = 0; i < movies.length; i++) {
     var thisMovie = movies[i];
-    var starsRate = Math.ceil(thisMovie.vote_average / 2);
-
-    // var rateAverage = thisMovie.vote_average;
+    // var starsRate = Math.ceil(thisMovie.vote_average / 2);
     var context = {
       title: thisMovie.title,
       original_title: thisMovie.original_title,
       original_language: thisMovie.original_language,
-      vote_average: starsRate
-
-
+      vote_average: starsRate(thisMovie.vote_average)
     };
-
-
     var html = template(context);
     $('#movie-list').append(html);
   }
-
 };
 // ricerca film
 function searchMovies() {

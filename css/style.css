@@ -17,7 +17,6 @@ body {
   justify-content: center;
 }
 
-
 .schedaFilm {
   list-style: none;
 }
@@ -31,10 +30,16 @@ li.movie h2 {
   font-weight: bold;
   color: blueviolet;
 }
+
 ul.schedaFilm li span {
   color: blueviolet;
 }
 
-.star-template {
-  display: none;
+.stars-wrapper {
+  margin: auto 0;
+}
+
+.fa-star {
+  font-size: 12px;
+  color: blueviolet;
 }
