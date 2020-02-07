@@ -19,6 +19,15 @@ $(document).ready(function() {
   });
 });
 // FUNZIONI
+
+// // stampa stelle
+// function starsRate(star, userRate) {
+//   var star = $('.star-template').children().clone();
+//   for (var i = 0; i < userRate; i++) {
+//     $('.schedaFilm .stars-wrapper').append(star);
+//   }
+// }
+
 // stampa film
 function printMovies(movies) {
   var source = $("#entry-template").html();
@@ -26,6 +35,7 @@ function printMovies(movies) {
   for (var i = 0; i < movies.length; i++) {
     var thisMovie = movies[i];
     var starsRate = Math.ceil(thisMovie.vote_average / 2);
+
     // var rateAverage = thisMovie.vote_average;
     var context = {
       title: thisMovie.title,
@@ -70,6 +80,7 @@ function searchMovies() {
   });
   $('#movie-search').val('');
 };
+
 
 
 // no risultati

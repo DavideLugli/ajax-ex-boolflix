@@ -9,6 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
   <!-- google fonts style x LATO -->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <!-- font awesome cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
   <!-- mio style -->
   <link rel="stylesheet" href="css/style.css">
   <title>BoolFlix</title>
@@ -27,11 +29,25 @@
   <!-- handlebars template -->
   <script id="entry-template" type="text/x-handlebars-template">
     <li class="movie">
-      <span>Titolo: </span>{{title}}
-      <span>Titolo Originale: </span>{{original_title}}
-      <span>Lingua Originale: </span>{{original_language}}
-      <span>Voto Medio Utenti: </span> {{vote_average}}</li>
+      <h2>{{title}}</h2>
+      <ul class="schedaFilm">
+        <li><span>Titolo Originale: </span>{{original_title}}</li>
+        <li><span>Lingua Originale: </span>{{original_language}}</li>
+        <li class="flex"><span>Voto Medio Utenti: </span>
+          <div class="stars-wrapper flex">
+          {{vote_average}}
+          </div>
+        </li>
+      </ul>
+    </li>
 </script>
+<!-- fine handlebars template -->
+
+  <div class="star-template">
+    <i class="far fa-star"></i>
+  </div>
+
+  <!-- handlebars template -->
   <script id="noresults-template" type="text/x-handlebars-template">
     <li class="movie">La ricerca non ha prodotto risultati</li>
 </script>
