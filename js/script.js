@@ -8,12 +8,14 @@ $(document).ready(function() {
   $(".btn-search").click(function() {
     // svuoto risultati di ricerca
     $('#movie-list').html('');
+    $('#tv-list').html('');
     // avvio funzione ricerca
-    searchMovies()
+    searchMovies();
   });
   $("#movie-search").keypress(function() {
     if (event.which == 13 || event.keyCode == 13) {
       $('#movie-list').html('');
+      $('#tv-list').html('');
       searchMovies();
     }
   });
@@ -60,7 +62,24 @@ function printMovies(movies) {
     $('#movie-list').append(html);
   }
 };
-// ricerca film
+// stampa serie tv
+function printTvShows(tv) {
+  var source = $("#tv-template").html();
+  var template = Handlebars.compile(source);
+  for (var i = 0; i < tv.length; i++) {
+    var thisTvShow = tv[i];
+    // var starsRate = Math.ceil(thisMovie.vote_average / 2);
+    var context = {
+      name: thisTvShow.name,
+      original_name: thisTvShow.original_name,
+      original_language: flag(thisTvShow.original_language),
+      vote_average: starsRate(thisTvShow.vote_average)
+    };
+    var html = template(context);
+    $('#tv-list').append(html);
+  }
+};
+// ricerca film e serie tv
 function searchMovies() {
   var userSearch = $('#movie-search').val();
   $.ajax({
@@ -72,13 +91,41 @@ function searchMovies() {
       query: userSearch,
     },
     success: function(data) {
+      $('h1.film').removeClass('hidden');
       var moviesFound = data.results;
       if (data.total_results > 0) {
         printMovies(moviesFound);
 
 
       } else {
-        noResults();
+        noResultsMovie();
+
+      }
+
+    },
+    error: function(request, state, errors) {
+      console.log(errors);
+    }
+  });
+  $('#movie-search').val('');
+  // tv shows
+  $.ajax({
+    url: 'https://api.themoviedb.org/3/search/tv',
+    method: 'GET',
+    data: {
+      api_key: 'de1660ae74e359f522a07d42f19001a0',
+      language: 'it-It',
+      query: userSearch,
+    },
+    success: function(data) {
+      $('h1.tv').removeClass('hidden');
+      var tvFound = data.results;
+      if (data.total_results > 0) {
+        printTvShows(tvFound);
+
+
+      } else {
+        noResultsTv();
       }
 
     },
@@ -90,11 +137,17 @@ function searchMovies() {
 };
 
 
-
-// no risultati
-function noResults() {
+// no risultati film
+function noResultsMovie() {
   var source = $("#noresults-template").html();
   var template = Handlebars.compile(source);
   var html = template();
   $('#movie-list').append(html);
+}
+// no risultati serie tv
+function noResultsTv() {
+  var source = $("#noresults-template").html();
+  var template = Handlebars.compile(source);
+  var html = template();
+  $('#tv-list').append(html);
 }

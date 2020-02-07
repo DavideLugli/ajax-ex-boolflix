@@ -18,15 +18,24 @@
 
 <body>
   <div class="movie-search-wrapper flex">
-    <input type="search" id="movie-search" placeholder="Search Movies" value="">
+    <input type="search" id="movie-search" placeholder="Inserisci un titolo" value="">
     <button class="btn-search" type="button" name="button">Cerca</button>
   </div>
   <div class="movie-wrapper">
-    <ul id="movie-list">
+    <div class="film-wrapper">
+      <h1 class="film hidden">Film</h1>
+      <ul id="movie-list">
 
-    </ul>
+      </ul>
+    </div>
+    <div class="tv-shows-wrapper">
+      <h1 class="tv hidden">Serie TV</h1>
+      <ul id="tv-list">
+
+      </ul>
+    </div>
   </div>
-  <!-- handlebars template -->
+  <!-- handlebars template per film-->
   <script id="entry-template" type="text/x-handlebars-template">
     <li class="movie">
       <h2>{{title}}</h2>
@@ -41,12 +50,28 @@
       </ul>
     </li>
 </script>
-  <!-- fine handlebars template -->
-  <!-- handlebars template -->
+  <!-- fine handlebars template x film-->
+  <!-- handlebars template x serie tv -->
+  <script id="tv-template" type="text/x-handlebars-template">
+    <li class="movie">
+      <h2>{{name}}</h2>
+      <ul class="schedaFilm">
+        <li><span>Titolo Originale: </span>{{original_name}}</li>
+        <li><span>Lingua Originale: </span><img class="flag" src="img/{{original_language}}.svg" alt=""></li>
+        <li class="flex"><span>Voto Medio Utenti: </span>
+          <div class="stars-wrapper flex">
+          {{{vote_average}}}
+          </div>
+        </li>
+      </ul>
+    </li>
+</script>
+  <!-- fine handlebars template x serie tv-->
+  <!-- handlebars template x ricerca invalida-->
   <script id="noresults-template" type="text/x-handlebars-template">
     <li class="movie">La ricerca non ha prodotto risultati</li>
 </script>
-  <!-- fine handlebars template -->
+  <!-- fine handlebars template x ricerca invalida-->
   <!-- mio script -->
   <script src="js/script.js" charset="utf-8"></script>
 </body>

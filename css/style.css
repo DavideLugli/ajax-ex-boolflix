@@ -8,6 +8,21 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+h1.film {
+  font-size: 30px;
+  padding: 15px;
+  color: blueviolet;
+}
+h1.tv {
+  font-size: 30px;
+  padding: 15px;
+  color: firebrick;
+}
+
+.hidden {
+  display: none;
+}
+
 .flex {
   display: flex;
 }
@@ -25,23 +40,38 @@ li.movie {
   padding: 15px;
 }
 
-li.movie h2 {
+#movie-list li.movie h2 {
   font-size: 17px;
   font-weight: bold;
   color: blueviolet;
 }
 
-ul.schedaFilm li span {
+#tv-list li.movie h2 {
+  font-size: 17px;
+  font-weight: bold;
+  color: firebrick;
+}
+
+#movie-list ul.schedaFilm li span {
   color: blueviolet;
+}
+
+#tv-list ul.schedaFilm li span {
+  color: firebrick;
 }
 
 .stars-wrapper {
   margin: auto 0;
 }
 
-.fa-star {
+#movie-list .fa-star {
   font-size: 12px;
   color: blueviolet;
+}
+
+#tv-list .fa-star {
+  font-size: 12px;
+  color: firebrick;
 }
 
 .flag {
