@@ -25,12 +25,18 @@ function printMovies(movies) {
   var template = Handlebars.compile(source);
   for (var i = 0; i < movies.length; i++) {
     var thisMovie = movies[i];
+    var starsRate = Math.ceil(thisMovie.vote_average / 2);
+    // var rateAverage = thisMovie.vote_average;
     var context = {
       title: thisMovie.title,
       original_title: thisMovie.original_title,
       original_language: thisMovie.original_language,
-      vote_average: thisMovie.vote_average
+      vote_average: starsRate
+
+
     };
+
+
     var html = template(context);
     $('#movie-list').append(html);
   }
@@ -51,6 +57,7 @@ function searchMovies() {
       var moviesFound = data.results;
       if (data.total_results > 0) {
         printMovies(moviesFound);
+
 
       } else {
         noResults();
