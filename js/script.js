@@ -19,6 +19,7 @@ $(document).ready(function() {
   });
 });
 // FUNZIONI
+// stampa film
 function printMovies(movies) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
@@ -35,7 +36,7 @@ function printMovies(movies) {
   }
 
 };
-
+// ricerca film
 function searchMovies() {
   var userSearch = $('#movie-search').val();
   $.ajax({
@@ -48,7 +49,12 @@ function searchMovies() {
     },
     success: function(data) {
       var moviesFound = data.results;
-      printMovies(moviesFound);
+      if (data.total_results > 0) {
+        printMovies(moviesFound);
+
+      } else {
+        noResults();
+      }
 
     },
     error: function(request, state, errors) {
@@ -57,3 +63,12 @@ function searchMovies() {
   });
   $('#movie-search').val('');
 };
+
+
+// no risultati
+function noResults() {
+  var source = $("#noresults-template").html();
+  var template = Handlebars.compile(source);
+  var html = template();
+  $('#movie-list').append(html);
+}
