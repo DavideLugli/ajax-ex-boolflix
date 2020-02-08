@@ -45,10 +45,24 @@ function flag(lang) {
     return lang = 'problem';
   }
 }
+
+// stampa poster
+function printPoster(film) {
+  var poster = $('#entry-template').find('.poster');
+  // funzione perstampare immagine 'notfound' nel caso api non trovi il poster. non riesco a farla funzionare
+  if (film == null) {
+    return film = poster.attr("src", "img/notfound.jpg");
+
+  } else {
+    return film;
+  }
+}
+
 // stampa film
 function printMovies(movies) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
+  // var poster = $('#entry-template').find('.poster');
   for (var i = 0; i < movies.length; i++) {
     var thisMovie = movies[i];
     // var starsRate = Math.ceil(thisMovie.vote_average / 2);
@@ -56,7 +70,10 @@ function printMovies(movies) {
       title: thisMovie.title,
       original_title: thisMovie.original_title,
       original_language: flag(thisMovie.original_language),
-      vote_average: starsRate(thisMovie.vote_average)
+      vote_average: starsRate(thisMovie.vote_average),
+      width: 'w92',
+      // poster_path: thisMovie.poster_path
+      poster_path: printPoster(thisMovie.poster_path)
     };
     var html = template(context);
     $('#movie-list').append(html);
@@ -73,7 +90,9 @@ function printTvShows(tv) {
       name: thisTvShow.name,
       original_name: thisTvShow.original_name,
       original_language: flag(thisTvShow.original_language),
-      vote_average: starsRate(thisTvShow.vote_average)
+      vote_average: starsRate(thisTvShow.vote_average),
+      width: 'w92',
+      poster_path: thisTvShow.poster_path
     };
     var html = template(context);
     $('#tv-list').append(html);

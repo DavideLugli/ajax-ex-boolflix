@@ -39,6 +39,8 @@
   <script id="entry-template" type="text/x-handlebars-template">
     <li class="movie">
       <h2>{{title}}</h2>
+      <!-- https://image.tmdb.org/t/p/ url standard-->
+      <img class="poster" src="https://image.tmdb.org/t/p/{{width}}{{poster_path}}" alt="">
       <ul class="schedaFilm">
         <li><span>Titolo Originale: </span>{{original_title}}</li>
         <li><span>Lingua Originale: </span><img class="flag" src="img/{{original_language}}.svg" alt=""></li>
@@ -55,6 +57,7 @@
   <script id="tv-template" type="text/x-handlebars-template">
     <li class="movie">
       <h2>{{name}}</h2>
+      <img class="poster" src="https://image.tmdb.org/t/p/{{width}}{{poster_path}}" alt="">
       <ul class="schedaFilm">
         <li><span>Titolo Originale: </span>{{original_name}}</li>
         <li><span>Lingua Originale: </span><img class="flag" src="img/{{original_language}}.svg" alt=""></li>
