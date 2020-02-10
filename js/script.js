@@ -20,6 +20,8 @@ $(document).ready(function() {
     }
   });
 });
+
+
 // FUNZIONI
 
 // // stampa stelle
@@ -48,10 +50,19 @@ function flag(lang) {
 
 // stampa poster
 function printPoster(film) {
-  var poster = $('#entry-template').find('.poster');
-  // funzione perstampare immagine 'notfound' nel caso api non trovi il poster. non riesco a farla funzionare
-  if (film == null) {
-    return film = poster.attr("src", "img/notfound.jpg");
+
+  var poster = '<img class="poster" src="img/notfound.jpg" alt=""/>';
+  if (film != null) {
+    poster = "<img class='poster' src='https://image.tmdb.org/t/p/w342" + film + "'>";
+    return film = poster;
+  } else {
+    return film = poster
+  }
+}
+// stampa overview
+function printOverview(film) {
+  if (film == "") {
+    return film = 'non disponibile';
 
   } else {
     return film;
@@ -62,21 +73,21 @@ function printPoster(film) {
 function printMovies(movies) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
-  // var poster = $('#entry-template').find('.poster');
   for (var i = 0; i < movies.length; i++) {
     var thisMovie = movies[i];
-    // var starsRate = Math.ceil(thisMovie.vote_average / 2);
     var context = {
       title: thisMovie.title,
       original_title: thisMovie.original_title,
       original_language: flag(thisMovie.original_language),
       vote_average: starsRate(thisMovie.vote_average),
-      width: 'w92',
-      // poster_path: thisMovie.poster_path
-      poster_path: printPoster(thisMovie.poster_path)
+      width: 'w342',
+      poster_path: printPoster(thisMovie.poster_path),
+      overview: printOverview(thisMovie.overview)
+
     };
     var html = template(context);
-    $('#movie-list').append(html);
+    $('.movie-results-wrapper').append(html);
+
   }
 };
 // stampa serie tv
@@ -85,17 +96,17 @@ function printTvShows(tv) {
   var template = Handlebars.compile(source);
   for (var i = 0; i < tv.length; i++) {
     var thisTvShow = tv[i];
-    // var starsRate = Math.ceil(thisMovie.vote_average / 2);
     var context = {
       name: thisTvShow.name,
       original_name: thisTvShow.original_name,
       original_language: flag(thisTvShow.original_language),
       vote_average: starsRate(thisTvShow.vote_average),
-      width: 'w92',
-      poster_path: thisTvShow.poster_path
+      width: 'w342',
+      poster_path: printPoster(thisTvShow.poster_path),
+      overview: printOverview(thisTvShow.overview)
     };
     var html = template(context);
-    $('#tv-list').append(html);
+    $('.tv-results-wrapper').append(html);
   }
 };
 // ricerca film e serie tv
