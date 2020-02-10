@@ -23,9 +23,14 @@ header {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 25px;
   padding: 15px;
   color: white;
+}
+
+p {
+  color: white;
+  padding: 15px;
 }
 
 .poster {
@@ -75,6 +80,11 @@ input#movie-search {
   width: 342px;
   height: 513px;
   margin: 15px;
+  border: 1px solid white;
+}
+
+.card:hover .card-info {
+  display: block;
 }
 
 .card-relative {
@@ -84,10 +94,11 @@ input#movie-search {
 }
 
 .card-info {
+  display: none;
   padding: 20px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.58);
+  background-color: black;
   position: absolute;
   top: 50%;
   left: 50%;

@@ -14,8 +14,8 @@ $(document).ready(function() {
   });
   $("#movie-search").keypress(function() {
     if (event.which == 13 || event.keyCode == 13) {
-      $('#movie-list').html('');
-      $('#tv-list').html('');
+      $('.movie-results-wrapper').html('');
+      $('.tv-results-wrapper').html('');
       searchMovies();
     }
   });
@@ -172,12 +172,12 @@ function noResultsMovie() {
   var source = $("#noresults-template").html();
   var template = Handlebars.compile(source);
   var html = template();
-  $('#movie-list').append(html);
+  $('.movie-results-wrapper').append(html);
 }
 // no risultati serie tv
 function noResultsTv() {
   var source = $("#noresults-template").html();
   var template = Handlebars.compile(source);
   var html = template();
-  $('#tv-list').append(html);
+  $('.tv-results-wrapper').append(html);
 }
