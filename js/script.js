@@ -4,15 +4,15 @@
 // mia chiave api
 // de1660ae74e359f522a07d42f19001a0
 
-$(document).ready(function() {
-  $(".btn-search").click(function() {
+$(document).ready(function () {
+  $(".btn-search").click(function () {
     // svuoto risultati di ricerca
-    $('#movie-list').html('');
-    $('#tv-list').html('');
+    $('.movie-results-wrapper').html('');
+    $('.tv-results-wrapper').html('');
     // avvio funzione ricerca
     searchMovies();
   });
-  $("#movie-search").keypress(function() {
+  $("#movie-search").keypress(function () {
     if (event.which == 13 || event.keyCode == 13) {
       $('.movie-results-wrapper').html('');
       $('.tv-results-wrapper').html('');
@@ -120,7 +120,7 @@ function searchMovies() {
       language: 'it-It',
       query: userSearch,
     },
-    success: function(data) {
+    success: function (data) {
       $('h1.film').removeClass('hidden');
       var moviesFound = data.results;
       if (data.total_results > 0) {
@@ -133,7 +133,7 @@ function searchMovies() {
       }
 
     },
-    error: function(request, state, errors) {
+    error: function (request, state, errors) {
       console.log(errors);
     }
   });
@@ -147,7 +147,7 @@ function searchMovies() {
       language: 'it-It',
       query: userSearch,
     },
-    success: function(data) {
+    success: function (data) {
       $('h1.tv').removeClass('hidden');
       var tvFound = data.results;
       if (data.total_results > 0) {
@@ -159,7 +159,7 @@ function searchMovies() {
       }
 
     },
-    error: function(request, state, errors) {
+    error: function (request, state, errors) {
       console.log(errors);
     }
   });
